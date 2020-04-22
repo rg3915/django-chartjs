@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+*.sqlite
+*.sqlite3
+*.env
+*.DS_Store
+.venv/
+staticfiles/
+.ipynb_checkpoints/
