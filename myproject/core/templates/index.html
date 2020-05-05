@@ -19,8 +19,13 @@
 
 <div class="text-center mt-5 pt-5">
     <h1>Chart.js</h1>
-    <div class="col-sm-6">
-      <canvas id="myChart" width="400" height="400"></canvas>
+    <div class="row">
+      <div class="col-sm-6">
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+      <div class="col-sm-6">
+        <canvas id="myChartProduct" width="400" height="400"></canvas>
+      </div>
     </div>
 </div>
 
@@ -66,6 +71,90 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+
+$.ajax({
+  url: '/api/products/',
+  success: function(response) {
+    let mylabels = response.map(function(e) {
+      return e.title
+    })
+    let myvalues = response.map(function(e) {
+      return e.value
+    })
+    var ctx = document.getElementById('myChartProduct').getContext('2d');
+    var config = {
+      type: 'bar',
+      data: {
+          labels: mylabels,
+          datasets: [{
+              label: 'Preço dos produtos',
+              data: myvalues,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+    }
+    var myChart = new Chart(ctx, config);
+  }
+});
+
 </script>
 
 {% endblock js %}

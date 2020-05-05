@@ -341,3 +341,31 @@ admin.site.register(Category)
 EOF
 ```
 
+### Pegando os dados do banco para retornar no gráfico
+
+```
+cat << EOF > myproject/core/views.py
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Product
+
+
+def index(request):
+    template_name = 'index.html'
+    return render(request, template_name)
+
+
+def products(request):
+    products = Product.objects.values_list('title', 'price')
+    labels = []
+    values = []
+    for product in products:
+        labels.append(product[0])
+        values.append(product[1])
+    data = {
+        'labels': labels,
+        'values': values,
+    }
+    return JsonResponse(data)
+EOF
+```
