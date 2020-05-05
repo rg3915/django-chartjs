@@ -121,3 +121,72 @@ var myChart = new Chart(ctx, {
 });
 </script>
 ```
+
+### Criando os templates
+
+Para ver este exemplo funcionando precisamos criar um template:
+
+```
+cd myproject/core
+mkdir -p templates/includes
+```
+
+Vamos um <a href="https://gist.github.com/rg3915/0144a2408ec54c4e8008999631c64a30" target="_blank">template base</a>.
+
+```
+cd templates
+wget https://gist.githubusercontent.com/rg3915/0144a2408ec54c4e8008999631c64a30/raw/be05f2f8a483c6ddab3705c13bff0ac5fc2223be/base.html
+wget https://gist.githubusercontent.com/rg3915/0144a2408ec54c4e8008999631c64a30/raw/ecbd782e23b3886ce64b318ef5ea194ed89b8ab3/index.html#
+
+# Vá para a subpasta includes
+wget https://gist.githubusercontent.com/rg3915/0144a2408ec54c4e8008999631c64a30/raw/ee78c798ed1fd57e2ba7328342ac3f4ab20268be/nav.html
+```
+
+### Criando views e url.
+
+Vamos criar a url
+
+```
+# core/urls.py
+from django.urls import path
+from myproject.core import views as v
+
+
+app_name = 'core'
+
+
+urlpatterns = [
+    path('', v.index, name='index'),
+]
+```
+
+E a views.py
+
+```
+from django.shortcuts import render
+
+
+def index(request):
+    template_name = 'index.html'
+    return render(request, template_name)
+```
+
+### Rodando a aplicação
+
+Antes de rodar, faça
+
+```
+# Vá para a pasta onde está o manage.py
+cd ../..
+python contrib/env_gen.py
+python manage.py migrate
+```
+
+E por fim, rode a aplicação.
+
+```
+python manage.py runserver
+```
+
+### Inserindo o gráfico
+
