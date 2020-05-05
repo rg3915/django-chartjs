@@ -1,0 +1,23 @@
+product,price,category
+suco de laranja,6,Bebida
+refrigerante,"5,5",Bebida
+água mineral sem gás,"4,5",Bebida
+pudim de leite,4,Sobremesa
+gelatina,"1,5",Sobremesa
+ambrosia,5,Sobremesa
+X-salada,7,Lanche
+X-bacon,7,Lanche
+X-egg,6,Lanche
+X-tudo,10,Lanche
+banana,3,Fruta
+manga,3,Fruta
+melancia,5,Fruta
+uva,5,Fruta
+morango,5,Fruta
+picadinho,15,Refeição
+bife com ovo,15,Refeição
+frango ao molho,15,Refeição
+frango assado,17,Refeição
+costela cozida,20,Refeição
+costela assada,22,Refeição
+prato integral,20,Refeição
