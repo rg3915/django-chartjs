@@ -1,9 +1,9 @@
 title,price,category
 suco de laranja,6,Bebida
-refrigerante,"5,5",Bebida
-água mineral sem gás,"4,5",Bebida
+refrigerante,5.5,Bebida
+água mineral sem gás,4.5,Bebida
 pudim de leite,4,Sobremesa
-gelatina,"1,5",Sobremesa
+gelatina,1.5,Sobremesa
 ambrosia,5,Sobremesa
 X-salada,7,Lanche
 X-bacon,7,Lanche
