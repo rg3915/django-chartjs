@@ -190,3 +190,13 @@ python manage.py runserver
 
 ### Inserindo o gráfico
 
+Vamos copiar o exemplo de <a href="https://www.chartjs.org/docs/latest/" target="_blank">Get Started</a> para dentro de index.html.
+
+Veja o resultado em index.html.
+
+E em `base.html` acrescente, no final do arquivo
+
+```
+    ...
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+```
