@@ -200,3 +200,99 @@ E em `base.html` acrescente, no final do arquivo
     ...
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 ```
+
+# Parte 2
+
+## Trabalhando com dados reais
+
+Vamos trabalhar com dados reais vindos do banco de dados.
+
+Para isso vamos criar alguns modelos: *product* e *category*.
+
+### models.py
+
+Vamos editar o arquivo `models.py`.
+
+```
+cat << EOF > models.py
+from django.db import models
+
+
+class Category(models.Model):
+    title = models.CharField('categoria', max_length=50, unique=True)
+
+    class Meta:
+        verbose_name = 'categoria'
+        verbose_name_plural = 'categorias'
+
+    def __str__(self):
+        return self.title
+
+
+class Product(models.Model):
+    title = models.CharField('título', max_length=100, unique=True)
+    price = models.DecimalField('preço', max_digits=8, decimal_places=2)
+    category = models.ForeignKey(
+        Category,
+        verbose_name='categoria',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'produto'
+        verbose_name_plural = 'produtos'
+
+    def __str__(self):
+        return self.title
+EOF
+```
+
+### Migrações
+
+Vamos criar as migrações do banco.
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### Inserindo alguns dados
+
+Para isso abra o `shell_plus`.
+
+```
+python manage.py shell_plus
+```
+
+E rode o script a seguir:
+
+```
+# Criando as categorias
+categories = ('Bebida', 'Sobremesa', 'Lanche', 'Fruta', 'Refeição')
+[Category.objects.create(title=category) for category in categories]
+```
+
+
+### Visualizando os dados no Admin
+
+Talvez você ainda não tenha criado um super usuário...
+
+```
+python manage.py createsuperuser --username="admin"
+```
+
+Edite `admin.py`
+
+```
+cat << EOF > myproject/core/admin.py
+from django.contrib import admin
+from .models import Category, Product
+
+
+admin.site.register(Category)
+admin.site.register(Product)
+EOF
+```
