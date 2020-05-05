@@ -75,11 +75,11 @@ rm boilerplatesimple.sh
 
 ## Chart.js
 
-O [Chart.js](https://www.chartjs.org/) é uma biblioteca Javascript para gerar gráficos.
+O <a href="https://www.chartjs.org/" target="_blank">Chart.js</a> é uma biblioteca Javascript para gerar gráficos.
 
-Clicando em [Get Started](https://www.chartjs.org/docs/latest/) temos o seguinte exemplo:
+Clicando em <a href="https://www.chartjs.org/docs/latest/" target="_blank">Get Started</a> temos o seguinte exemplo:
 
-```
+```javascript
 <canvas id="myChart" width="400" height="400"></canvas>
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
