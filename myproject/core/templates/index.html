@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <!-- <div class="jumbotron">
   <div class="container">
@@ -16,60 +14,64 @@
     </p>
   </div>
 </div> -->
-
 <div class="text-center mt-5 pt-5">
-    <h1>Chart.js</h1>
-    <div class="row">
-      <div class="col-sm-6">
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </div>
-      <div class="col-sm-6">
-        <canvas id="myChartProduct" width="400" height="400"></canvas>
-      </div>
+  <h1>Chart.js</h1>
+  <div class="row">
+    <div class="col-sm-6">
+      <canvas id="myChart" width="400" height="400"></canvas>
     </div>
+    <div class="col-sm-6">
+      <canvas id="myChartProduct" width="400" height="400"></canvas>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <canvas id="myChartPie" width="400" height="400"></canvas>
+    </div>
+    <div class="col-sm-6">
+      <canvas id="myChartPieCategory" width="400" height="400"></canvas>
+    </div>
+  </div>
 </div>
-
 {% endblock content %}
-
 {% block js %}
-
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
         }
+      }]
     }
+  }
 });
 
 
@@ -86,75 +88,165 @@ $.ajax({
     var config = {
       type: 'bar',
       data: {
-          labels: mylabels,
-          datasets: [{
-              label: 'Preço dos produtos',
-              data: myvalues,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-              ],
-              borderWidth: 1
-          }]
+        labels: mylabels,
+        datasets: [{
+          label: 'Preço dos produtos',
+          data: myvalues,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
       },
       options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  }
-              }]
-          }
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     }
     var myChart = new Chart(ctx, config);
   }
 });
 
-</script>
+let bgcColor = [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(54, 162, 235, 0.2)'
+]
 
+let bdColor = [
+  'rgba(255, 99, 132, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(54, 162, 235, 1)'
+]
+
+let labels = [
+  'Red',
+  'Yellow',
+  'Blue'
+]
+
+let dataArray = [10, 20, 30]
+
+let data = {
+  datasets: [{
+    data: dataArray,
+    backgroundColor: bgcColor,
+    borderColor: bdColor,
+    borderWidth: 1
+  }],
+  labels: labels
+};
+
+
+var ctx = document.getElementById('myChartPie').getContext('2d');
+
+// For a pie chart
+var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: data
+});
+
+// https://coolors.co/f94144-f3722c-f8961e-f9c74f-90be6d-43aa8b-577590
+let bgcPalette = [
+  'rgba(249, 65, 68, 0.5)',
+  'rgba(243, 114, 44, 0.5)',
+  'rgba(248, 150, 30, 0.5)',
+  'rgba(249, 199, 79, 0.5)',
+  'rgba(144, 190, 109, 0.5)',
+  'rgba(67, 170, 139, 0.5)',
+  'rgba(87, 117, 144, 0.5)',
+]
+
+function random_color(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+let bgcColorCategory = []
+let bdColorCategory = []
+
+for (var i = 0; i < 7; i++) {
+  let bgcRandomColor = random_color(bgcPalette)
+  bgcColorCategory.push(bgcRandomColor);
+
+  let bdRandomColor = bgcRandomColor.replace('0.5', '1');
+  bdColorCategory.push(bgcRandomColor);
+}
+
+$.ajax({
+  url: '/api/categories/',
+  success: function(response) {
+    let mylabels = response.data.map(function(e) {
+      return e.label
+    })
+    let myvalues = response.data.map(function(e) {
+      return e.value
+    })
+    var ctx = document.getElementById('myChartPieCategory').getContext('2d');
+    var data = {
+      labels: mylabels,
+      datasets: [{
+        data: myvalues,
+        backgroundColor: bgcColorCategory,
+        borderColor: bdColorCategory,
+        borderWidth: 1
+      }]
+    }
+    // For a pie chart
+    var myPieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: data
+    });
+  }
+});
+</script>
 {% endblock js %}

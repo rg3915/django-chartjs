@@ -373,3 +373,40 @@ EOF
 ### Editando o template
 
 TODO
+
+
+### Gráfico de pizza
+
+Em inglês este gráfico é chamado de **pie**.
+
+```
+# core/urls.py
+    path('api/categories/', v.categories, name='categories'),
+```
+
+```
+# views.py
+from django.db.models import Count
+from django.http import JsonResponse
+from .models import Product
+
+# ...
+
+def categories(request):
+    categories = Product.objects\
+        .values('category')\
+        .annotate(value=Count('category'))\
+        .order_by('category')\
+        .values('category__title', 'value')
+    data = {
+        'data': [
+            {
+                'label': item['category__title'],
+                'value': item['value'],
+            }
+            for item in categories
+        ]
+    }
+    return JsonResponse(data)
+```
+
