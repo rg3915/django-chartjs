@@ -356,16 +356,20 @@ def index(request):
 
 
 def products(request):
-    products = Product.objects.values_list('title', 'price')
-    labels = []
-    values = []
-    for product in products:
-        labels.append(product[0])
-        values.append(product[1])
+    products = Product.objects.values('title', 'price')
     data = {
-        'labels': labels,
-        'values': values,
+        'data': [
+            {
+                'title': item['title'],
+                'value': float(item['price'])
+            }
+            for item in products
+        ]
     }
     return JsonResponse(data)
 EOF
 ```
+
+### Editando o template
+
+TODO

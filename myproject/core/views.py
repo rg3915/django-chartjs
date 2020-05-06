@@ -10,11 +10,13 @@ def index(request):
 
 def products(request):
     products = Product.objects.values('title', 'price')
-    data = [
-        {
-            'title': item['title'],
-            'value': float(item['price'])
-        }
-        for item in products
-    ]
-    return JsonResponse(data, safe=False)
+    data = {
+        'data': [
+            {
+                'title': item['title'],
+                'value': float(item['price'])
+            }
+            for item in products
+        ]
+    }
+    return JsonResponse(data)

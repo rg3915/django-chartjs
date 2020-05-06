@@ -76,10 +76,10 @@ var myChart = new Chart(ctx, {
 $.ajax({
   url: '/api/products/',
   success: function(response) {
-    let mylabels = response.map(function(e) {
+    let mylabels = response.data.map(function(e) {
       return e.title
     })
-    let myvalues = response.map(function(e) {
+    let myvalues = response.data.map(function(e) {
       return e.value
     })
     var ctx = document.getElementById('myChartProduct').getContext('2d');
