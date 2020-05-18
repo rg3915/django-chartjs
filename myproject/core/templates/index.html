@@ -37,6 +37,7 @@
       <canvas id="myChartLine" width="400" height="400"></canvas>
     </div>
     <div class="col-sm-6">
+      <canvas id="myChartRadar" width="400" height="400"></canvas>
     </div>
   </div>
 </div>
@@ -256,6 +257,7 @@ $.ajax({
   }
 });
 
+// Line
 var ctx = document.getElementById('myChartLine').getContext('2d');
 
 let dataLine = {
@@ -286,6 +288,44 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         stacked: false
       }]
+    }
+  }
+});
+
+// Radar
+var ctx = document.getElementById('myChartRadar').getContext('2d');
+
+let dataRadar = {
+  labels: ['Alpha', 'Beta', 'Gama', 'Delta', 'Épsilon', 'Zeta', 'Etá', 'Teta'],
+  datasets: [{
+    label: 'Valores',
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgb(255, 99, 132)',
+    fill: true,
+    data: [0, 2, 5, 7, 3, 5, 8, 10],
+  }, {
+    label: 'Valores',
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgb(54, 162, 235)',
+    fill: true,
+    data: [2, 4, 7, 3, 8, 4, 10, 8],
+  }]
+};
+
+
+// Radar
+var myRadarChart = new Chart(ctx, {
+  type: 'radar',
+  data: dataRadar,
+  options: {
+    scale: {
+      angleLines: {
+        display: false
+      },
+      ticks: {
+        suggestedMin: 5,
+        suggestedMax: 10
+      }
     }
   }
 });
