@@ -32,6 +32,13 @@
       <canvas id="myChartPieCategory" width="400" height="400"></canvas>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <canvas id="myChartLine" width="400" height="400"></canvas>
+    </div>
+    <div class="col-sm-6">
+    </div>
+  </div>
 </div>
 {% endblock content %}
 {% block js %}
@@ -246,6 +253,40 @@ $.ajax({
       type: 'doughnut',
       data: data
     });
+  }
+});
+
+var ctx = document.getElementById('myChartLine').getContext('2d');
+
+let dataLine = {
+  labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+  datasets: [{
+      label: 'Valores',
+      backgroundColor: 'red',
+      borderColor: 'lightBlue',
+      fill: false,
+      data: [1, 7, 2, 10, 3],
+    },
+    {
+      label: 'Valores',
+      backgroundColor: 'red',
+      borderColor: 'lightGreen',
+      fill: false,
+      data: [0, 5, 3, 6, 4],
+    }
+  ]
+};
+
+// Line
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: dataLine,
+  options: {
+    scales: {
+      yAxes: [{
+        stacked: false
+      }]
+    }
   }
 });
 </script>
